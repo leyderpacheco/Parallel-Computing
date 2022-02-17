@@ -1,0 +1,3 @@
+g++ main_benchmark_final01.cpp 
+./a.out 400 
+time ./a.out 400 

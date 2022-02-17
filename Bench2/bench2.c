@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include 
 
 
 /* Se crea una variable con un valor alto para reservar memoria */
