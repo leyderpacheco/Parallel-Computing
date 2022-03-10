@@ -1,0 +1,18 @@
+
+Creacion del objeto main: gcc -ansi -pedantic -Wall -c main.c
+
+Creacion del objeto funciones :gcc -ansi -pedantic -Wall -c funciones.c
+
+gcc -Wall -c funciones.c
+
+gcc -Wall -c main.c
+
+Enlazar los objetos: gcc -Wall -o ejecutable funciones.o main.o
+
+./ejecutable
+
+******************************************************************************
+
+make main
+
+./main

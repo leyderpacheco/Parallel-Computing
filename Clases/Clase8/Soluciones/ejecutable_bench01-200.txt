@@ -1,0 +1,64 @@
+valor ingresado 200
+ 0.025840 
+valor ingresado 200
+ 0.025373 
+valor ingresado 200
+ 0.025029 
+valor ingresado 200
+ 0.028156 
+valor ingresado 200
+ 0.027898 
+valor ingresado 200
+ 0.025739 
+valor ingresado 200
+ 0.025003 
+valor ingresado 200
+ 0.026452 
+valor ingresado 200
+ 0.025302 
+valor ingresado 200
+ 0.025736 
+valor ingresado 200
+ 0.024987 
+valor ingresado 200
+ 0.026573 
+valor ingresado 200
+ 0.023054 
+valor ingresado 200
+ 0.022112 
+valor ingresado 200
+ 0.021157 
+valor ingresado 200
+ 0.020750 
+valor ingresado 200
+ 0.020584 
+valor ingresado 200
+ 0.020723 
+valor ingresado 200
+ 0.020633 
+valor ingresado 200
+ 0.021714 
+valor ingresado 200
+ 0.021328 
+valor ingresado 200
+ 0.020311 
+valor ingresado 200
+ 0.020593 
+valor ingresado 200
+ 0.021636 
+valor ingresado 200
+ 0.023403 
+valor ingresado 200
+ 0.020171 
+valor ingresado 200
+ 0.020401 
+valor ingresado 200
+ 0.021413 
+valor ingresado 200
+ 0.021154 
+valor ingresado 200
+ 0.021018 
+valor ingresado 200
+ 0.021173 
+valor ingresado 200
+ 0.021299 

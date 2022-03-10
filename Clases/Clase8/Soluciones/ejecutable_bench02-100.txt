@@ -1,0 +1,64 @@
+Número ingresado: 100
+ 0.017141 
+Número ingresado: 100
+ 0.017688 
+Número ingresado: 100
+ 0.016537 
+Número ingresado: 100
+ 0.016971 
+Número ingresado: 100
+ 0.016190 
+Número ingresado: 100
+ 0.016203 
+Número ingresado: 100
+ 0.016243 
+Número ingresado: 100
+ 0.017822 
+Número ingresado: 100
+ 0.016349 
+Número ingresado: 100
+ 0.019205 
+Número ingresado: 100
+ 0.017077 
+Número ingresado: 100
+ 0.016238 
+Número ingresado: 100
+ 0.015208 
+Número ingresado: 100
+ 0.015500 
+Número ingresado: 100
+ 0.016079 
+Número ingresado: 100
+ 0.016075 
+Número ingresado: 100
+ 0.016263 
+Número ingresado: 100
+ 0.015857 
+Número ingresado: 100
+ 0.016552 
+Número ingresado: 100
+ 0.015485 
+Número ingresado: 100
+ 0.015731 
+Número ingresado: 100
+ 0.018271 
+Número ingresado: 100
+ 0.014080 
+Número ingresado: 100
+ 0.014027 
+Número ingresado: 100
+ 0.014005 
+Número ingresado: 100
+ 0.014113 
+Número ingresado: 100
+ 0.012672 
+Número ingresado: 100
+ 0.011586 
+Número ingresado: 100
+ 0.012200 
+Número ingresado: 100
+ 0.011498 
+Número ingresado: 100
+ 0.011620 
+Número ingresado: 100
+ 0.011608 

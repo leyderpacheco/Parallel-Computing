@@ -1,0 +1,64 @@
+Número ingresado: 200
+ 0.153037 
+Número ingresado: 200
+ 0.149335 
+Número ingresado: 200
+ 0.132118 
+Número ingresado: 200
+ 0.141850 
+Número ingresado: 200
+ 0.133495 
+Número ingresado: 200
+ 0.132628 
+Número ingresado: 200
+ 0.133533 
+Número ingresado: 200
+ 0.138576 
+Número ingresado: 200
+ 0.131581 
+Número ingresado: 200
+ 0.134198 
+Número ingresado: 200
+ 0.134740 
+Número ingresado: 200
+ 0.131773 
+Número ingresado: 200
+ 0.124031 
+Número ingresado: 200
+ 0.125586 
+Número ingresado: 200
+ 0.123353 
+Número ingresado: 200
+ 0.127280 
+Número ingresado: 200
+ 0.125268 
+Número ingresado: 200
+ 0.123898 
+Número ingresado: 200
+ 0.123440 
+Número ingresado: 200
+ 0.123437 
+Número ingresado: 200
+ 0.124849 
+Número ingresado: 200
+ 0.123900 
+Número ingresado: 200
+ 0.110587 
+Número ingresado: 200
+ 0.098747 
+Número ingresado: 200
+ 0.099385 
+Número ingresado: 200
+ 0.095700 
+Número ingresado: 200
+ 0.093900 
+Número ingresado: 200
+ 0.095470 
+Número ingresado: 200
+ 0.093832 
+Número ingresado: 200
+ 0.096926 
+Número ingresado: 200
+ 0.104206 
+Número ingresado: 200
+ 0.102889 
