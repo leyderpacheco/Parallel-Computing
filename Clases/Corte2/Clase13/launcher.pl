@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 #   Date: 08/03/2022
-#   Author: Juan Camilo Rodriguez
+#   Author: Leyder Pacheco
 #   Subjebt: Paralell Computation.
 #   Topic: Diseño de experimentos, 
 

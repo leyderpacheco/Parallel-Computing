@@ -1,6 +1,6 @@
 /* Universidad Sergio Arboleda 
 	Fecha : 08-02-2022
-	Autor : Juan Camilo Rodriguez
+	Autor : Leyder Pacheco
 	Materia : Parallel Computing
 	Tema : Implementación Benchmark en C
 */
