@@ -31,7 +31,7 @@ struct Data
 	double **Mc;
 };
 
-Data *data = {};
+Data *data;
 
 /* -------------------------------------Funciones ------------------------------------*/
 
@@ -193,8 +193,18 @@ void printMatriz_posix(double **matriz, int size){
 
 
 void recoger_datos(int N, int Nthreads, double **Ma, double **Mb, double **Mc){
-	Data data = { N, Nthreads, Ma, Mb, Mc};
-	printf("N %d",data.N);
+	Data datos = { N, Nthreads, Ma, Mb, Mc};
+	printf("N = %d, Nthreads = %d\n", N,Nthreads,Ma,Mb);
+	//printMatriz_posix(Ma, N);
+	//printMatriz_posix(Mb, N);
+	//printMatriz_posix(Mc, N);
+	data = &datos;
+
+	//printf("N = %d, Nthreads = %d\n", data->N,data->Nthreads);
+	//printMatriz_posix(data->Ma, N);
+	//printMatriz_posix(data->Mb, N);
+	//printMatriz_posix(data->Mc, N);
+
 }
 
 
@@ -206,11 +216,18 @@ void recoger_datos(int N, int Nthreads, double **Ma, double **Mb, double **Mc){
 void *multMM_posix(void *arg){
 
 /*************ACA DEBE IR LA DATA ***********************/
+	printf("N = %d\n", data->N);
 	int N = data->N;
 	int Nthreads = data->Nthreads;
 	double **Ma = data->Ma;
 	double **Mb = data->Mb;
 	double **Mc = data->Mc;
+
+	printf("N = %d, Nthreads = %d\n", N, Nthreads);
+	printMatriz_posix(data->Ma, N);
+	printMatriz_posix(data->Mb, N);
+	printMatriz_posix(data->Mc, N);
+
 
 	/*arg tiene el id del hilo*/
 	int i, j, idTh;
