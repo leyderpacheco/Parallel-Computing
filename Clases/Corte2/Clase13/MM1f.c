@@ -1,5 +1,5 @@
 /*Fecha: 2022-02-08
-* Author: Leyder Pacheco.
+* Author: Leyder Pacheco
 * Subject: Parallel and Distributed Computing.
 * Topic: Build of parallel benchmark
 * Description: Application that allows evaluating the performance

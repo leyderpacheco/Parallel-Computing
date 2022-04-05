@@ -1,4 +1,4 @@
-GCC = gcc-11 
+GCC = gcc-9 
 FLAGS = -ansi -pedantic -Wall 
 CFLAGS = -lm -lpthread -fopenmp 
 THEPROGS=MM1c MM1f MMPosix
