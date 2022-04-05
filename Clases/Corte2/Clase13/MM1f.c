@@ -1,13 +1,11 @@
-
-/* Universidad Sergio Arboleda 
-	Fecha : 08-02-2022
-	Autor : Leyder Pacheco
-	Materia : Parallel Computing
-	Tema : Implementación Benchmark en C
+/*Fecha: 2022-02-08
+* Author: Leyder Pacheco.
+* Subject: Parallel and Distributed Computing.
+* Topic: Build of parallel benchmark
+* Description: Application that allows evaluating the performance
+* of a specific aspect of the computer using matrix multiplication
+* with the calssical algorithm (rows x columns)
 */
-
-
-/*Interfaces*/
 
 #include "modulo.h"
 #include <stdio.h>
@@ -19,18 +17,12 @@
 #include <errno.h>
 
 
-/*CONSTANTS*/
-struct timespec inicio, fin;
-
 /* -------------------------------------Funciones ------------------------------------*/
 
-
-/* Se crea una variable con un valor alto 
-   para reservar memoria */
+/*Varaible of high value to reserve memory*/
 #define DATA_SZ (1024*1024*64*3)
 
-
-/* Se reserva el espacio de memoria según el valor */
+/*Memory space acordin reserve memory value*/
 static double MEM_CHUNK[DATA_SZ];
 
 int main(int argc, char *argv[]) {
@@ -43,19 +35,18 @@ int main(int argc, char *argv[]) {
 	Ma = MEM_CHUNK;
 	Mb = Ma + N*N;
 	Mr = Mb + N*N;
-	
 	initMatrix(N, Ma, Mb, Mr);
 	sampleStart();
-	matrixMultiplyMM1f(N, Ma, Mb, Mr);
+	MM1f(N, Ma, Mb, Mr);
 	sampleEnd();
+	if (N<4){
+		printf("Ma\n");
+		printMatrix(N, Ma);
+		printf("Mb\n");
+		printTransposed(N, Mb);
+		printf("Mr\n");
+		printMatrix(N, Mr);
+	}
 		
 	return 0;
 }
-/*
-Compile
-    gcc modulo.c -c
-    gcc MM1c.c -c
-	gcc modulo.o MM1c.o -o MM1c
-Execute
-	time ./MM1c N--> N : Any number
-*/

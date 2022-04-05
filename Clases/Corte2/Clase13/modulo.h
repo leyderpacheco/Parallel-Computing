@@ -1,5 +1,6 @@
-#ifndef MODULO_C_H_INCLUDE
-#define MODULO_C_H_INCLUDE
+
+#ifndef MODULE_C_H_INCLUDE
+#define MODULE_C_H_INCLUDE
 
 
 void sampleStart();
@@ -7,12 +8,12 @@ void sampleEnd();
 double randNumber();
 void initMatrix(int SZ, double *Ma, double *Mb, double *Mr);
 void printMatrix(int SZ, double *M);
-void matrixMultiplyMM1c(int size, double *Ma, double *Mb, double *Mr);
-void matrixMultiplyMM1f(int size, double *Ma, double *Mb, double *Mr);
-double ** reserva_memoria(int size);
-void initMatrix_posix(double **Ma,double **Mb,double **Mc, int size);
-void printMatriz_posix(double **matriz, int size);
-void recoger_datos(int N, int Nthreads, double **Ma, double **Mb, double **Mc);
-void *multMM_posix(void *arg);
+void MM1c(int size, double *Ma, double *Mb, double *Mr);
+void MM1f(int size, double *Ma, double *Mb, double *Mr);
+double ** memReserve (int size);
+void initMatrix_DoublePointers (double **MA, double **MB, double **MC, int size);
+void printMatrix_DoublePointers (double **M, int size);
+/*void *multMM(void *arg);*/
+void printTransposed(int size, double *M);
 
 #endif

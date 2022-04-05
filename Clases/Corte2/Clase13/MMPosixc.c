@@ -1,68 +1,133 @@
-/* Universidad Sergio Arboleda 
-	Fecha : 08-02-2022
-	Autor : Leyder PAcheco
-	Materia : Parallel Computing
-	Tema : Implementación Posix
-	Programa para multiplicar dos matrices con variables GLOBALES
-1. Creacion de variablse doble puntero para matrices pricipal Global
-2. Funcion reserva de memoria para las matrices de doble puntero
-3. FUncion inicializacion de matrices
-4. Funcion para el producto de matrices:
-se dividide la matriz A por porciones a ser enviadas a cada hilo
---> el numero de hilos sera cargado al ejecutar
---> La dimension de la matriz sera enviada al ejecutar
-5. La dimension de la matriz siempre sera N*N
-6. Se necesita duncion para impresion de matrices (doble puntero)
+/*Date: 2022-03-30
+* Author: Leyder Pacheco
+* Subject: Parallel and Distributed Computing.
+* Topic: Posix implemetation (Library)
+* Description: Application for matrix multiplication
+  with the classical algorithm (rows x columns) using
+  global variables. Also, using the following functions:
+    1. Creation of double pointer variables for matrices
+    2. Memory reserve for double pointer matrices
+    3. Init matrix
+    4. Function for the matrix's product:
+        4.1.1 The matrix A is divide and those portions 
+        will be sent to an individual thread
+        4.1.2 The matrix's size will be sent in the 
+        execution.
+    5. Matrix's size always squared (NxN)
+    6.  Print matrix with double pointer.
+
+* 
 */
 
-#include "modulo.h"
+
+/*Interfaces*/
+#include "module.h"
 #include <stdio.h>
 #include <time.h>
-#include <stdio.h>
-#include <sys/time.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <sys/time.h>
+#include <omp.h>
 
-void main(int argc, char* argv[]){
+typedef struct argsThreads{
+    int numThreads;
+    int matrixSize;
+    double **matrixA;
+    double **matrixB;
+    double **matrixR;
+    int idThread;
+} threadsArguments;
 
-	int N, Nthreads;
-	double **Ma, **Mb, **Mc;
-	if ( argc != 3){
-		printf("./exe N<dimMatriz> Nth<numHIlos>\n");
+/**
+ * @brief Function that will be sent to each thread, that makes the matrix multiplication.
+ * The matrix A divides in slices, in function with the dimension and the number of threads that requires the
+ * user.
+ *
+ * Note: the function will be void, and this returns a potential warning. Think in it to improve it
+ * @param arg that has the thread struct with the needed info for the thread
+ */
+void *multMM(void *arg)
+{
+    int i, j, k,idTh,N,Nthreads,portionSize,initRow,endRow;
+    double **Ma,**Mb,**Mr,sum;
+	idTh = ((threadsArguments*)arg)->idThread;
+	Ma = ((threadsArguments*)arg)->matrixA;
+	Mb = ((threadsArguments*)arg)->matrixB;
+	Mr = ((threadsArguments*)arg)->matrixR;
+	N = ((threadsArguments*)arg)->matrixSize;
+	Nthreads = ((threadsArguments*)arg)->numThreads;
+	portionSize = N / Nthreads;		   /*It is determined the portion of matrix A to send to each thread*/
+	initRow = idTh * portionSize;	   /*It is passed the beggining of the row*/
+	endRow = (idTh + 1) * portionSize; /*It is passed the end of the row*/
+	for (i = initRow; i < endRow; i++)
+	{
+		for (j = 0; j < N; ++j)
+		{
+			sum = 0;
+			for (k = 0; k < N; k++)
+			{
+				sum += Ma[i][k] * Mb[k][j];
+			}
+			Mr[i][j] = sum;
+		}
 	}
-	/*Se capturan las variables size y numero de hilos*/
-
-	N = atof(argv[1]);
-	Nthreads = atof(argv[2]);
-
-	/*Se crea el pool de hilos*/
-	pthread_t *hilosExe;
-	/*Se reserva mamoria para los hilos*/
-	hilosExe = (pthread_t *) malloc(Nthreads*sizeof(pthread_t)); 
-
-	/*Creacion y reserva de memoria para cada matriz*/
-
-	Ma = reserva_memoria(N);
-	Mb = reserva_memoria(N);
-	Mc = reserva_memoria(N);
-	/*Se inicializan las matrices*/
-	initMatrix_posix(Ma,Mb,Mc,N);
-
-
-	recoger_datos(N, Nthreads, Ma, Mb, Mc);
-
-	/*Se reparten las tareas a cada hilo al usar la funcion pthread_t*/
-	sampleStart();
-
-	for(int i = 0; i< Nthreads; ++i){
-		int *idThread;
-		idThread = (int *)malloc(sizeof(int));
-		*idThread = i;
-		pthread_create(&hilosExe[i], NULL, multMM_posix,(void *)idThread);
-	}
-	for(int i = 0; i< Nthreads; ++i){
-		pthread_join(hilosExe[i], NULL);
-	}
-	sampleEnd();
-	free(hilosExe);	
+    return arg;
 }
+
+/**
+ * @brief Main function
+ * 
+ * @param argc That is the arguments count
+ * @param argv That is the arguments values
+ * @return 0 if everything is ok or another number in error case
+ */
+int main(int argc, char* argv[]){
+    double **Ma,**Mb,**Mc;
+    int N,Nthreads,i;
+    pthread_t *threads;
+    threadsArguments *theArguments;
+    if (argc!=3){
+        printf("./MMPosix <matrix size> <# of threads>\n");
+        return -1;
+    }
+    
+    
+    /*Init of global variables*/
+    N           = atof(argv[1]);    /* Matrix's size.*/
+    Nthreads    = atof(argv[2]);    /* Number of threads.*/
+    if(Nthreads>omp_get_max_threads()){
+        printf("El número de hilos debe ser menor o igual a %d",omp_get_max_threads());
+        return -1;
+    }
+
+    threads=(pthread_t*)malloc(N*sizeof(pthread_t));/*Thread reservation*/
+    theArguments= (threadsArguments*)malloc(Nthreads*sizeof(threadsArguments));
+    /*Memory creation and reserce for each matrix*/
+    Ma = memReserve(N); 
+    Mb = memReserve(N);
+    Mc = memReserve(N);
+    initMatrix_DoublePointers (Ma, Mb, Mc, N);
+    
+    printMatrix_DoublePointers (Ma, N);
+    printMatrix_DoublePointers (Mb, N);
+    
+    sampleStart();
+    for (i = 0; i < Nthreads; ++i){
+        theArguments[i].numThreads=Nthreads;
+        theArguments[i].matrixSize=N;
+        theArguments[i].matrixA=Ma;
+        theArguments[i].matrixB=Mb;
+        theArguments[i].matrixR=Mc;
+        theArguments[i].idThread=i;
+        pthread_create(&threads[i],NULL,multMM,&theArguments[i]);
+    }
+    for (i = 0; i < Nthreads; ++i){
+        
+        pthread_join(threads[i],NULL);
+    }
+    sampleEnd();
+    free(threads);
+    printMatrix_DoublePointers (Mc, N);
+    return 0;
+}
+
