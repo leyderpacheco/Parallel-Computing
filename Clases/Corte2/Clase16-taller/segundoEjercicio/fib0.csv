@@ -1,0 +1,4 @@
+Version,fib(0) runtime[ns],speedup,fib(90) runtime [ns],speedup
+Python,139,1.0,3252,1.0
+Cython,23,6.1,142,22.9
+Pure C,1,122.0,82,39.7
